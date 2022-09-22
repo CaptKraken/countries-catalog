@@ -1,3 +1,5 @@
+export type SortOption = "asc" | "desc";
+
 type PostalCode = {
   format: string;
   regex: string;
