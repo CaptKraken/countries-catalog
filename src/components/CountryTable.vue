@@ -1,4 +1,5 @@
 <template>
+  <CountryModal :open="open" :close="closeModal" :country="viewingCountry" />
   <div v-if="props.countries.length > 0" class="overflow-auto">
     <table class="w-full my-2 table-auto border-spacing-4">
       <thead>
@@ -18,6 +19,7 @@
           :key="c.name.official"
           class="hover:bg-green-400 cursor-pointer"
           :class="i % 2 === 0 ? 'bg-green-200' : 'bg-white'"
+          @click="openModal(c)"
         >
           <td>
             <img :src="c.flags.png" class="w-8" />
@@ -64,8 +66,10 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType, ref, watch } from "vue";
 import { ICountry } from "../types";
+import { setTitle } from "../utils/utils";
+import CountryModal from "./CountryModal.vue";
 
 const props = defineProps({
   countries: {
@@ -73,4 +77,29 @@ const props = defineProps({
     type: Array as PropType<ICountry[]>,
   },
 });
+
+const viewingCountry = ref<ICountry | undefined>(undefined);
+const open = ref<boolean>(false);
+const openModal = (country: ICountry) => {
+  open.value = true;
+  viewingCountry.value = country;
+  setTitle(country.name.official);
+};
+
+const closeModal = () => {
+  open.value = false;
+  viewingCountry.value = undefined;
+  setTitle("Country Catalog");
+};
+
+watch(
+  () => open.value,
+  () => {
+    if (open.value) {
+      document.documentElement.style.overflow = "hidden";
+      return;
+    }
+    document.documentElement.style.overflow = "auto";
+  }
+);
 </script>

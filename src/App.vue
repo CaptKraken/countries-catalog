@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from "vue";
+import { computed, onBeforeMount, onMounted, reactive, ref } from "vue";
 import { useCountryStore } from "./state/countries";
 import {
   sortFunction,
   orderCountriesByName,
   paginateCountries,
+  setTitle,
 } from "./utils/utils";
 import { SortOption } from "./types";
 import CountryTable from "./components/CountryTable.vue";
@@ -20,6 +21,10 @@ const countries = computed(() =>
 onMounted(async () => {
   // fetch all the countries
   await useCountryStore().getAllCountries();
+});
+
+onBeforeMount(() => {
+  setTitle("Country Catalog");
 });
 
 const sortedCountries = computed(() => {

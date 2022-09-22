@@ -46,3 +46,13 @@ export const paginateCountries = (
   const lastIndex = pageNumber * pageSize;
   return array.slice((pageNumber - 1) * pageSize, lastIndex);
 };
+
+/**
+ * Sets document's title.
+ * @param {String} title title of the page
+ */
+export const setTitle = (title: string) => {
+  if (document) {
+    document.title = title;
+  }
+};
