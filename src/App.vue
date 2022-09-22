@@ -23,6 +23,10 @@ onMounted(async () => {
     <h1 class="text-2xl font-semibold">COUNTRY CATALOG</h1>
   </header>
   <main>
+    <select v-model="sortOption">
+      <option value="asc">a-z</option>
+      <option value="desc">z-a</option>
+    </select>
     <p v-if="useCountryStore().countries.length < 1">loading data...</p>
     <div v-if="countries.length > 0" class="overflow-auto">
       <table class="w-full my-2 table-auto border-spacing-4">
