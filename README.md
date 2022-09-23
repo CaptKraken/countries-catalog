@@ -1,16 +1,17 @@
-# Vue 3 + TypeScript + Vite
+#Countries Catalog
+a skill presenting project.
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+###Requirements
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
-
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
-
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+- [x] Show the following fields on your catalog:
+  - [x] Flags (Please use png file within flags property)
+  - [x] Country Name (name.official)
+  - [x] 2 character Country Code (cca2)
+  - [x] 3 character Country Code (cca3)
+  - [x] Native Country Name (name.nativeName.zho.official)
+  - [x] Alternative Country Name (altSpellings)
+  - [x] Country Calling Codes (idd)
+- [x] Search by Country Name (Fuzzy Search)
+- [x] Sorting by Country Name (Asc,Desc)
+- [x] Pagination (25 rows per page)
+- [x] After clicked on country name, pop up a modal and show all others information.
