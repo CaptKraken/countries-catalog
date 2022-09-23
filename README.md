@@ -1,7 +1,7 @@
-#Countries Catalog
+# Countries Catalog
 a skill presenting project.
 
-###Requirements
+### Requirements
 
 - [x] Show the following fields on your catalog:
   - [x] Flags (Please use png file within flags property)
