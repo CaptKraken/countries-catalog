@@ -79,6 +79,7 @@ const props = defineProps({
 });
 
 const viewingCountry = ref<ICountry | undefined>(undefined);
+
 const open = ref<boolean>(false);
 const openModal = (country: ICountry) => {
   open.value = true;
