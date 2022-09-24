@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted, reactive, ref, watch } from "vue";
 import { useCountryStore } from "./state/countries";
 import {
   sortFunction,
@@ -9,14 +8,11 @@ import {
 } from "./utils/utils";
 import { SortOption } from "./types";
 import CountryTable from "./components/CountryTable.vue";
+import { computed, onBeforeMount, onMounted, reactive, ref, watch } from "vue";
 
 const countryStore = useCountryStore();
 const sortOption = ref<SortOption>("asc");
-const countries = computed(() =>
-  countryStore.countries.sort((a, b) =>
-    sortFunction(a.name.official, b.name.official, sortOption.value)
-  )
-);
+const countries = computed(() => countryStore.countries);
 
 onMounted(async () => {
   // fetch all the countries
@@ -29,10 +25,10 @@ onBeforeMount(() => {
 
 const searchedCountries = computed(() => {
   if (!term.value) {
-    return useCountryStore().countries;
+    return countries.value;
   }
 
-  return useCountryStore().countries.filter((v) => {
+  return countries.value.filter((v) => {
     const searchTerm = term.value.toLowerCase();
     const countryName = v.name.official.toLowerCase();
 
